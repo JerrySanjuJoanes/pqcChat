@@ -49,20 +49,21 @@ const ChatContainer = () => {
   }
 
   return (
-    <div className="flex-1 flex flex-col overflow-auto">
+    <div className="flex-1 flex flex-col overflow-auto bg-gradient-to-b from-base-100 to-base-200/30">
       <ChatHeader />
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((message) => (
+        {messages.map((message, index) => (
           <div
             key={message._id}
-            className={`chat ${
+            className={`chat animate-fadeInUp ${
               message.senderId === authUser._id ? "chat-end" : "chat-start"
             }`}
             ref={messageEndRef}
+            style={{animationDelay: `${index * 0.05}s`}}
           >
-            <div className=" chat-image avatar">
-              <div className="size-10 rounded-full border">
+            <div className="chat-image avatar">
+              <div className="size-10 rounded-full border-2 border-base-300 hover:border-primary/30 transition-colors">
                 <img
                   src={
                     message.senderId === authUser._id
@@ -70,6 +71,7 @@ const ChatContainer = () => {
                       : selectedUser.profilePic || "/avatar.png"
                   }
                   alt="profile pic"
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -78,15 +80,15 @@ const ChatContainer = () => {
                 {formatMessageTime(message.createdAt)}
               </time>
             </div>
-            <div className="chat-bubble flex flex-col">
+            <div className="chat-bubble chat-bubble-enhanced flex flex-col shadow-sm hover:shadow-md transition-all duration-200">
               {message.image && (
                 <img
                   src={message.image}
                   alt="Attachment"
-                  className="sm:max-w-[200px] rounded-md mb-2"
+                  className="sm:max-w-[200px] rounded-lg mb-2 shadow-sm hover:shadow-md transition-shadow duration-200"
                 />
               )}
-              {message.text && <p>{message.text}</p>}
+              {message.text && <p className="leading-relaxed">{message.text}</p>}
             </div>
           </div>
         ))}

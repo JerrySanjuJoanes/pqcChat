@@ -28,8 +28,19 @@ const App = () => {
 
   if (isCheckingAuth && !authUser)
     return (
-      <div className="flex items-center justify-center h-screen">
-        <Loader className="size-10 animate-spin" />
+      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-base-200 to-base-300">
+        <div className="flex flex-col items-center gap-4 animate-fadeInUp">
+          <div className="relative">
+            <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center">
+              <Loader className="size-8 animate-spin text-primary" />
+            </div>
+            <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse-slow"></div>
+          </div>
+          <div className="text-center">
+            <h2 className="text-lg font-semibold gradient-text">PQCchat</h2>
+            <p className="text-sm text-base-content/60">Loading your conversations...</p>
+          </div>
+        </div>
       </div>
     );
 

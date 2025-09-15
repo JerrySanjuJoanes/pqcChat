@@ -45,38 +45,38 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2">
+    <div className="min-h-screen grid lg:grid-cols-2 bg-gradient-to-br from-base-200 via-base-300 to-base-200">
       {/* left side */}
-      <div className="flex flex-col justify-center items-center p-6 sm:p-12">
+      <div className="flex flex-col justify-center items-center p-6 sm:p-12 animate-fadeInLeft">
         <div className="w-full max-w-md space-y-8">
           {/* LOGO */}
           <div className="text-center mb-8">
             <div className="flex flex-col items-center gap-2 group">
               <div
-                className="size-12 rounded-xl bg-primary/10 flex items-center justify-center 
-              group-hover:bg-primary/20 transition-colors"
+                className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/30 flex items-center justify-center group-hover:scale-110 group-hover:shadow-lg
+              transition-all duration-300"
               >
-                <MessageSquare className="size-6 text-primary" />
+                <MessageSquare className="w-8 h-8 text-primary group-hover:rotate-12 transition-transform duration-300" />
               </div>
-              <h1 className="text-2xl font-bold mt-2">Create Account</h1>
-              <p className="text-base-content/60">
+              <h1 className="text-3xl font-bold mt-4 gradient-text">Create Account</h1>
+              <p className="text-base-content/60 text-lg">
                 Get started with your free account
               </p>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="form-control">
+            <div className="form-control animate-fadeInUp" style={{animationDelay: '0.1s'}}>
               <label className="label">
-                <span className="label-text font-medium">Full Name</span>
+                <span className="label-text font-semibold text-base">Full Name</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="size-5 text-base-content/40" />
+                  <User className="size-5 text-primary/60" />
                 </div>
                 <input
                   type="text"
-                  className={`input input-bordered w-full pl-10`}
+                  className="input input-bordered w-full pl-10 input-enhanced rounded-xl focus:ring-2 focus:ring-primary/20 transition-all duration-200"
                   placeholder="John Doe"
                   value={formData.fullName}
                   onChange={(e) =>
@@ -86,17 +86,17 @@ const SignUpPage = () => {
               </div>
             </div>
 
-            <div className="form-control">
+            <div className="form-control animate-fadeInUp" style={{animationDelay: '0.2s'}}>
               <label className="label">
-                <span className="label-text font-medium">Email</span>
+                <span className="label-text font-semibold text-base">Email</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="size-5 text-base-content/40" />
+                  <Mail className="size-5 text-primary/60" />
                 </div>
                 <input
                   type="email"
-                  className={`input input-bordered w-full pl-10`}
+                  className="input input-bordered w-full pl-10 input-enhanced rounded-xl focus:ring-2 focus:ring-primary/20 transition-all duration-200"
                   placeholder="you@example.com"
                   value={formData.email}
                   onChange={(e) =>
@@ -106,17 +106,17 @@ const SignUpPage = () => {
               </div>
             </div>
 
-            <div className="form-control">
+            <div className="form-control animate-fadeInUp" style={{animationDelay: '0.3s'}}>
               <label className="label">
-                <span className="label-text font-medium">Password</span>
+                <span className="label-text font-semibold text-base">Password</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="size-5 text-base-content/40" />
+                  <Lock className="size-5 text-primary/60" />
                 </div>
                 <input
                   type={showPassword ? "text" : "password"}
-                  className={`input input-bordered w-full pl-10`}
+                  className="input input-bordered w-full pl-10 input-enhanced rounded-xl focus:ring-2 focus:ring-primary/20 transition-all duration-200"
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={(e) =>
@@ -125,13 +125,13 @@ const SignUpPage = () => {
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center hover:bg-base-300/50 rounded-r-xl transition-colors duration-200"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeOff className="size-5 text-base-content/40" />
+                    <EyeOff className="size-5 text-primary/60 hover:text-primary transition-colors" />
                   ) : (
-                    <Eye className="size-5 text-base-content/40" />
+                    <Eye className="size-5 text-primary/60 hover:text-primary transition-colors" />
                   )}
                 </button>
               </div>
@@ -139,13 +139,14 @@ const SignUpPage = () => {
 
             <button
               type="submit"
-              className="btn btn-primary w-full"
+              className="btn btn-primary w-full btn-enhanced rounded-xl h-12 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 animate-fadeInUp"
+              style={{animationDelay: '0.4s'}}
               disabled={isSigningUp}
             >
               {isSigningUp ? (
                 <>
                   <Loader2 className="size-5 animate-spin" />
-                  Loading...
+                  Creating account...
                 </>
               ) : (
                 "Create Account"
@@ -153,10 +154,10 @@ const SignUpPage = () => {
             </button>
           </form>
 
-          <div className="text-center">
-            <p className="text-base-content/60">
+          <div className="text-center animate-fadeInUp" style={{animationDelay: '0.5s'}}>
+            <p className="text-base-content/60 text-lg">
               Already have an account?{" "}
-              <Link to="/login" className="link link-primary">
+              <Link to="/login" className="link link-primary font-semibold hover:scale-105 transition-transform duration-200">
                 Sign in
               </Link>
             </p>
